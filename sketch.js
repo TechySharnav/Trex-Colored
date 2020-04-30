@@ -1,5 +1,5 @@
 //Create variables for Trex 
-var trex, trex_running, trex_collided, trex2;
+var trex, trex_running, trex_collided;
 
 //Create variables for Ground 
 var ground, invisibleGround, groundImage;
@@ -33,8 +33,7 @@ function preload() {
   //Load Trex Running and Collided Animation
   trex_running = loadAnimation("trex1.png", "trex3.png");
   trex_collided = loadImage("trex_collided.png");
-  trex2 = loadImage("trex2.png");
-  
+
   //Add Animation to ground
   groundImage = loadImage("ground2.png");
 
@@ -58,6 +57,7 @@ function preload() {
   jump_sound = loadSound('jump.mp3');
   checkPoint_sound = loadSound('checkPoint.mp3');
   
+  myFont = loadFont('arcadepi.ttf');
 }
 
 function setup() {
@@ -69,6 +69,7 @@ function setup() {
   trex.addAnimation("Collided", trex_collided);
   trex.scale = 0.5;
   trex.setCollider("circle",0,0,35);
+  trex.debug = true;
   
   //Create Ground Sprite
   ground = createSprite(200, 180, 400, 20);
@@ -95,6 +96,7 @@ function setup() {
   GameOver.visible = false;
   restart.visible = false;
   
+  textFont(myFont);
 }
 
 function draw() {
@@ -102,13 +104,13 @@ function draw() {
 
   //Display Score
   text("Score: " + Score, 500, 50);
-  text("HI: "+ HighestScore, 450,50);
+  text("HI: "+ HighestScore, 400,50);
   //Make Invisible Ground support Trex
     trex.collide(invisibleGround);  
   
   if (gameState === PLAY) {
     
-    Score = Score + Math.round(getFrameRate() / 60);
+    Score = Score + Math.round(getFrameRate() /60);
 
         
     //Make Trex Jump
@@ -217,7 +219,7 @@ function spawnObstacle() {
     }
 
     obstacle.scale = 0.5;
-    obstacle.lifetime = 100;
+    obstacle.lifetime = (600/obstacle.velocityX);
 
     
     obstacle.depth = trex.depth;
