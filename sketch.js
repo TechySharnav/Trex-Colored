@@ -1,5 +1,5 @@
 //Create variables for Trex 
-var trex, trex_running, trex_collided;
+var trex, trex_running, trex_collided, trex2;
 
 //Create variables for Ground 
 var ground, invisibleGround, groundImage;
@@ -33,7 +33,8 @@ function preload() {
   //Load Trex Running and Collided Animation
   trex_running = loadAnimation("trex1.png", "trex3.png");
   trex_collided = loadImage("trex_collided.png");
-
+  trex2 = loadImage("trex2.png");
+  
   //Add Animation to ground
   groundImage = loadImage("ground2.png");
 
