@@ -69,7 +69,6 @@ function setup() {
   trex.addAnimation("Collided", trex_collided);
   trex.scale = 0.5;
   trex.setCollider("circle",0,0,35);
-  trex.debug = true;
   
   //Create Ground Sprite
   ground = createSprite(200, 180, 400, 20);
